@@ -226,30 +226,11 @@ function cta_shortcode_shortcode($attr)
 			];
 		$i++;
 	}
-	if (function_exists('get_clean_tel_link')) {
-	if (isset($attr["phone"])) {
-		$telLink = get_clean_tel_link(
-			$attr["phone"],
-			$get_rds_template_data_array["site_info"]["country_code"]
-		);
-	} else {
-		$telLink = get_clean_tel_link(
-			$get_rds_template_data_array["globals"]["in_content_cta"]["phone"],
-			$get_rds_template_data_array["site_info"]["country_code"]
-		);
-	}
-} else {
-	if (isset($attr["phone"])) {
-		$telLink =
-			$get_rds_template_data_array["site_info"]["country_code"] .
-			$attr["phone"];
-	} else {
-		$telLink =
-			$get_rds_template_data_array["site_info"]["country_code"] .
-			$get_rds_template_data_array["globals"]["in_content_cta"]["phone"];
-	}
-}
-
+		if (isset($attr["phone"])) {
+			$telLink = get_clean_tel_link($attr["phone"], $get_rds_template_data_array["site_info"]["country_code"]);
+		} else {
+			$telLink = get_clean_tel_link($get_rds_template_data_array["globals"]["in_content_cta"]["phone"], $get_rds_template_data_array["site_info"]["country_code"]);
+		}
 
 	if (isset($attr["target"])) {
 		$target = $attr["target"] == "true" ? "_blank" : "_self";

@@ -4,15 +4,10 @@
    $button_class = !empty( $args["globals"]["in_content_cta"]["button_class"] ) ?  $args["globals"]["in_content_cta"]["button_class"] : '';
    $buttonText = !empty( $args["globals"]["in_content_cta"]["button_text"] ) ?  $args["globals"]["in_content_cta"]["button_text"] : '';
    $buttonLink = !empty( $args["globals"]["in_content_cta"]["button_link"] ) ?  $args["globals"]["in_content_cta"]["button_link"] : '';
-  $phone_number = !empty($args["globals"]["in_content_cta"]["phone"])
+   $phone_number = !empty($args["globals"]["in_content_cta"]["phone"])
     ? $args["globals"]["in_content_cta"]["phone"]
     : $args["site_info"]["phone"];
-
-if (function_exists('get_clean_tel_link')) {
-    $telLink = get_clean_tel_link($phone_number, $args["site_info"]["country_code"]);
-} else {
-    $telLink = $args["site_info"]["country_code"] . $phone_number;
-}
+   $telLink = get_clean_tel_link($phone_number, $args["site_info"]["country_code"]);
    $target = $args["globals"]["in_content_cta"]["target"] == "true" ? "_blank" : "_self";
    $schedule_id = "";
    if (isset($args["globals"]["in_content_cta"]["id"]) && !empty($args["globals"]["in_content_cta"]["id"]) && ($args["globals"]["in_content_cta"]["id"] == "service_titan" || $args["globals"]["in_content_cta"]["id"] == "schedule_engine")) {
